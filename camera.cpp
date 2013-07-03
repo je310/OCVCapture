@@ -48,41 +48,20 @@ int main(int argc, char** argv)
                 usleep(1000);
         }
         
-        namedWindow("Gray", CV_WINDOW_AUTOSIZE);
-        namedWindow("RGB", CV_WINDOW_AUTOSIZE);
+        //namedWindow("Gray", CV_WINDOW_AUTOSIZE);
+        //namedWindow("RGB", CV_WINDOW_AUTOSIZE);
         
         Mat gray, rgb;
         
-        bool done = false;
-        bool paused = false;
+       
+      for(int i = 0; i<100; i++){
+        capture.gray(gray);
+	  }
 
-        while (!done)
-        {
-                if (!paused)
-                        done = !capture.grab();
-                        
-                if (!done)
-                {
-                        capture.gray(gray);
-                        imshow("Gray", gray);
-                        capture.rgb(rgb);
-                        imshow("RGB", rgb);
-                }
-
-                if (!done)
-                {
-                        int key = waitKey(10);
-                        switch (key)
-                        {
-                                case 27:
-                                        done = true;
-                                        break;
-                                case ' ':
-                                        paused = !paused;
-                                        break;
-                        }
-                }
-        }
+        //imshow("Gray", gray);
+        capture.rgb(rgb);
+        // imshow("RGB", rgb);
+             
 
         capture.close();
 
